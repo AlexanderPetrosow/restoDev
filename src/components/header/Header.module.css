@@ -1,0 +1,35 @@
+.header {
+  background-color: #fff;
+  margin-bottom: 8px;
+  border-radius: 0 0 24px 24px;
+}
+
+.headerTop {
+  padding: 20px 16px;
+}
+
+.headerTop h2 {
+  font-size: 17.58px;
+  font-weight: 900;
+  line-height: 18px;
+}
+
+.headerBottom {
+  padding: 13px 16px;
+}
+
+.headerButton {
+  background-color: transparent;
+  border: none;
+}
+
+.headerButton svg {
+  height: 28px;
+  width: 28px;
+}
+
+.headerBottomButton {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 13px 11px;
+}
