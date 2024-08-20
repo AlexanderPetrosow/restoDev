@@ -1,3 +1,4 @@
+import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Category from "./components/main/categories/Category";
 import Main from "./components/main/Main";
@@ -12,6 +13,7 @@ const App: React.FC = () => {
       />
       <Main />
       <Category />
+      <Footer />
     </div>
   );
 };
