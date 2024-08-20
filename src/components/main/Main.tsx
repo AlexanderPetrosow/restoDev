@@ -2,6 +2,8 @@ import React from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import styles from "./Main.module.css"
+// import Category from "./categories/Category";
+
 
 const Main: React.FC = () => {
   return (
@@ -196,7 +198,9 @@ const Main: React.FC = () => {
               </div>
             </>
           }
-        ></Tab>
+        >
+          {/* <Category /> */}
+        </Tab>
       </Tabs>
     </div>
   );

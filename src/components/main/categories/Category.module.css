@@ -1,44 +1,90 @@
-.main{
-    background-color: #fff;
-    padding: 12px 16px;
+.main {
+  background-color: #fff;
+  padding: 12px 16px;
 }
 
-.categoryContainer{
-    background-color: #fff;
+.categoryContainer {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  background-color: white;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
 }
 
-.categoryItem{
-    border-radius: 12px ;
-    background-color: #F1F2F7;
-    padding: 9px 8px;
+.sticky {
+  position: fixed;
+  margin: 0 auto;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.categorySection{
-    background-color: #fff;
+.categoryItem {
+  color: #000;
+  text-decoration: none;
+  background-color: #f1f2f7 ;
+  border-radius: 12px;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  white-space: nowrap; 
+  transition: background-color 0.3s ease;
 }
 
-.cardContainer{
-    background-color: #F1F2F7 !important;
-    border-radius: 16px !important;
+#navbar-category{
+  background-color: #f1f2f7 !important;
+
 }
 
-.cardBody{
-    padding: 8px;
+.categoryItem.active {
+  background-color: #FF511B;
+  color: white;
 }
 
-.cardImgTop{
-    height: 159px;
-    border-radius: 16px;
-    margin: 4px;
+.categorySection {
+  background-color: #fff;
 }
 
-.addToCart{
-    background-color: #fff;
-    padding: 8px !important;
-    border-radius: 12px;
+.cardContainer {
+  background-color: #f1f2f7 !important;
+  border-radius: 16px !important;
+  border: none !important;
 }
 
-.addToCartBtns{
-    border: none;
-    background-color: transparent;
+.cardBody {
+  padding: 8px;
 }
+
+.cardImgTop {
+  height: 159px;
+  border-radius: 16px;
+  margin: 4px;
+}
+
+.addToCart {
+  background-color: #fff;
+  padding: 8px !important;
+  border-radius: 12px;
+}
+
+.addToCartBtns {
+  border: none;
+  background-color: transparent;
+}
+
+
+.cartCountOverlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+

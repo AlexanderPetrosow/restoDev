@@ -18,6 +18,7 @@ const Header: React.FC<headerProps> = ({
 }) => {
   return (
     <div className={`${styles.header} contianer`}>
+      <div className={`container`}>
       <div className={`${styles.headerTop} d-flex justify-content-between`}>
         <button className={`${styles.headerButton}  text-start`}>
           <IoIosArrowRoundBack />
@@ -26,6 +27,7 @@ const Header: React.FC<headerProps> = ({
         <button className={`${styles.headerButton} text-end`}>
           <CiCircleQuestion />
         </button>
+      </div>
       </div>
       <div className={`${styles.headerBottom}`}>
         <div className="d-flex gap-2 mb-2">

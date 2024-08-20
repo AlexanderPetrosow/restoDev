@@ -1,0 +1,81 @@
+/* CategoryModal.module.css */
+
+.modalOverlay {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's on top */
+  }
+  
+  .modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .modalBody {
+    text-align: start;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .modalImage {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .modalTitle {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .modalDescription {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .addItemsToCart{
+    background-color: #F1F2F7;
+    align-items: center;
+    border-radius: 12px;
+    
+    /* text-align: center; */
+  }
+
+  .addItemsToCart button{
+    background-color: transparent;
+    border: none;
+  }
+
+  .addToCart{
+    background-color: #FF511B;
+    border-radius: 12px;
+    padding: 8px;
+    color: #fff;
+  }
+
+  .addToCartBtn{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+  }
+  

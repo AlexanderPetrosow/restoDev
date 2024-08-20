@@ -1,11 +1,18 @@
 .header {
   background-color: #fff;
   margin-bottom: 8px;
+  padding-top: 70px;
   border-radius: 0 0 24px 24px;
 }
 
 .headerTop {
   padding: 20px 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; /* Ensure the background is solid to cover content underneath */
+  z-index: 1000; /* Ensure it stays above other content */
 }
 
 .headerTop h2 {
