@@ -37,7 +37,6 @@
 
 #navbar-category{
   background-color: #f1f2f7 !important;
-
 }
 
 .categoryItem.active {
@@ -48,43 +47,3 @@
 .categorySection {
   background-color: #fff;
 }
-
-.cardContainer {
-  background-color: #f1f2f7 !important;
-  border-radius: 16px !important;
-  border: none !important;
-}
-
-.cardBody {
-  padding: 8px;
-}
-
-.cardImgTop {
-  height: 159px;
-  border-radius: 16px;
-  margin: 4px;
-}
-
-.addToCart {
-  background-color: #fff;
-  padding: 8px !important;
-  border-radius: 12px;
-}
-
-.addToCartBtns {
-  border: none;
-  background-color: transparent;
-}
-
-
-.cartCountOverlay {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: red;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 50%;
-  font-weight: bold;
-}
-

@@ -1,0 +1,21 @@
+.cardContainer{
+    background-color: #F1F2F7 !important;
+    border: none !important;
+    padding: 5px;
+}
+
+.cardImgTop{
+    border-radius: 12px;
+}
+
+.addItemsToCart{
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 8px;
+    width: 100%;
+}
+
+.addItemsToCart button{
+    background-color: transparent;
+    border: none;
+}

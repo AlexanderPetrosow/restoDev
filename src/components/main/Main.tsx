@@ -193,13 +193,11 @@ const Main: React.FC = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-
                 <p>Доставка</p>
               </div>
             </>
           }
         >
-          {/* <Category /> */}
         </Tab>
       </Tabs>
     </div>

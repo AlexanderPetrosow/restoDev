@@ -1,49 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { FaMinus, FaPlus } from "react-icons/fa";
 import { ScrollSpy } from "bootstrap";
-import CategoryModal from "../categoryModal/CategoryModal";
+import CategorySection from "./categorySection/CategorySection";
 import axios from "axios";
 import styles from "./Category.module.css";
 
 const Category: React.FC = () => {
   const categoryContainerRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<{
-    img: string;
-    title: string;
-    price: number;
-  } | null>(null);
-  const [cartCounts, setCartCounts] = useState<{ [key: string]: number }>({});
   const [categories, setCategories] = useState<Category[]>([]);
 
-  type Item = {
-    name: string;
-    price: number;
-  };
-
   type Category = {
-    id: string | number; // Assuming 'id' could be a string or number
+    id: string | number;
     name: string;
-    items: Item[];
   };
 
+  // Fetch list of categories
   useEffect(() => {
     axios
-      .get("https://restodev.ru/api/user/dish/list/1/") // ensure 1 is a valid ID
+      .get("https://restodev.ru/api/user/menu/list/1/")
       .then((response) => {
-        console.log(response.data); // Log the response to inspect its structure
+        console.log(response.data);
         if (response.data && response.data.list) {
           const categoriesData: Category[] = response.data.list.map(
-            (category: any) => ({
+            (category: unknown) => ({
               id: category.id,
               name: category.name,
-              items: category.items.map((item: any) => ({
-                name: item.name,
-                price: item.cost,
-              })),
             })
           );
           setCategories(categoriesData);
@@ -54,15 +37,12 @@ const Category: React.FC = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
+  // Sticky category container
   useEffect(() => {
     const handleScroll = () => {
       if (categoryContainerRef.current) {
         const offsetTop = categoryContainerRef.current.offsetTop;
-        if (window.scrollY >= offsetTop) {
-          setIsSticky(true);
-        } else {
-          setIsSticky(false);
-        }
+        setIsSticky(window.scrollY >= offsetTop);
       }
     };
 
@@ -72,6 +52,7 @@ const Category: React.FC = () => {
     };
   }, []);
 
+  // ScrollSpy effect
   useEffect(() => {
     const scrollSpyElement = document.body;
     const scrollSpy = new ScrollSpy(scrollSpyElement, {
@@ -105,36 +86,6 @@ const Category: React.FC = () => {
     };
   }, []);
 
-  const handleCardClick = (item: { name: string; price: number }) => {
-    setSelectedItem({
-      img: "https://via.placeholder.com/150",
-      title: item.name,
-      price: item.price,
-    });
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  const addToCart = (itemName: string) => {
-    setCartCounts((prevCounts) => ({
-      ...prevCounts,
-      [itemName]: (prevCounts[itemName] || 0) + 1,
-    }));
-  };
-
-  const removeFromCart = (itemName: string) => {
-    setCartCounts((prevCounts) => {
-      const newCounts = { ...prevCounts };
-      if (newCounts[itemName] > 0) {
-        newCounts[itemName] -= 1;
-      }
-      return newCounts;
-    });
-  };
-
   return (
     <div className={`${styles.main} container`}>
       <div
@@ -160,76 +111,9 @@ const Category: React.FC = () => {
           </a>
         ))}
       </div>
-
       {categories.map((category) => (
-        <section
-          key={category.id}
-          id={category.id}
-          className={`${styles.categorySection} my-5`}
-        >
-          <h2>{category.name}</h2>
-          <div className="row">
-            {category.items.map((item, itemIndex) => (
-              <div key={itemIndex} className="col-md-4 mb-4">
-                <div
-                  className={`${styles.cardContainer} card`}
-                  onClick={() => handleCardClick(item)}
-                >
-                  <img
-                    src="https://via.placeholder.com/150"
-                    className={`${styles.cardImgTop}`}
-                    alt={item.name}
-                  />
-                  {cartCounts[item.name] > 0 && (
-                    <div className={styles.cartCountOverlay}>
-                      {cartCounts[item.name]}
-                    </div>
-                  )}
-                  <div className={`${styles.cardBody}`}>
-                    <h5 className="card-title">{item.name}</h5>
-                    <p className="card-text">{item.price} ₽</p>
-                    <div
-                      className={`${styles.addToCart} d-flex justify-content-between`}
-                    >
-                      <button
-                        className={`${styles.addToCartBtns}`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          removeFromCart(item.name);
-                        }}
-                      >
-                        <FaMinus />
-                      </button>
-                      <p>{item.price} ₽</p>
-                      <button
-                        className={`${styles.addToCartBtns}`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          addToCart(item.name);
-                        }}
-                      >
-                        <FaPlus />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <CategorySection key={category.id} id={category.id} name={category.name} />
       ))}
-
-      {showModal && selectedItem && (
-        <CategoryModal
-          img={selectedItem.img}
-          title={selectedItem.title}
-          onClose={handleCloseModal}
-        >
-          <p>
-            {selectedItem.title} - {selectedItem.price} ₽
-          </p>
-        </CategoryModal>
-      )}
     </div>
   );
 };
