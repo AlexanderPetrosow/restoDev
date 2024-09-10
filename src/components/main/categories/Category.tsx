@@ -16,10 +16,10 @@ const Category: React.FC = () => {
     name: string;
   };
 
-  // Fetch list of categories
+  // used to fetch list of menu items from spesific rest id, here - 5
   useEffect(() => {
     axios
-      .get("https://restodev.ru/api/user/menu/list/1/")
+      .get("https://restodev.ru/api/user/menu/list/5/")
       .then((response) => {
         console.log(response.data);
         if (response.data && response.data.list) {
@@ -37,7 +37,7 @@ const Category: React.FC = () => {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  // Sticky category container
+  // used for making categories scroll bar sticky at some point
   useEffect(() => {
     const handleScroll = () => {
       if (categoryContainerRef.current) {
@@ -52,7 +52,7 @@ const Category: React.FC = () => {
     };
   }, []);
 
-  // ScrollSpy effect
+  // used for enabling scrollspy effect on categories scrollspy
   useEffect(() => {
     const scrollSpyElement = document.body;
     const scrollSpy = new ScrollSpy(scrollSpyElement, {
@@ -111,6 +111,7 @@ const Category: React.FC = () => {
           </a>
         ))}
       </div>
+      {/* applies map on each category item and returns section, section itself then returns its menu items */}
       {categories.map((category) => (
         <CategorySection key={category.id} id={category.id} name={category.name} />
       ))}

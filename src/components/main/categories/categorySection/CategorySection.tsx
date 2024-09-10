@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import CategoryItem from "./categoryItem/CategoryItem";
 import styles from "./CategorySection.module.css";
@@ -17,14 +17,12 @@ type Dish = {
   label: string[];
 };
 
-const id_rest = 1;
-
 const CategorySection: React.FC<CategorySectionProps> = ({ id, name }) => {
   const [dishes, setDishes] = useState<Dish[]>([]);
 
-  useEffect(() => {
+  const fetchDishes = useCallback(() => {
     axios
-      .get(`https://restodev.ru/api/user/dish/general/${id}/${id_rest}/`)
+      .get(`https://restodev.ru/api/user/dish/general/${id}/5/`)
       .then((response) => {
         if (response.data && response.data.list) {
           setDishes(response.data.list);
@@ -34,6 +32,10 @@ const CategorySection: React.FC<CategorySectionProps> = ({ id, name }) => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, [id]);
+
+  useEffect(() => {
+    fetchDishes();
+  }, [fetchDishes]);
 
   return (
     <section id={id.toString()} className={`${styles.categorySection} my-5`}>
