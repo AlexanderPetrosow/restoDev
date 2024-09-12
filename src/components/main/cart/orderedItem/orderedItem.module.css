@@ -1,0 +1,21 @@
+.orderedItem {
+    display: flex;
+  background-color: #fff;
+}
+
+.addToCart {
+  background-color: #f1f2f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100px;
+  border-radius: 12px;
+  padding: 10px;
+  float:  right;
+}
+
+.addToCart button {
+  background-color: transparent;
+  border: none;
+}
